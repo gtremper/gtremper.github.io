@@ -30,7 +30,13 @@ module.exports = function (grunt) {
     yeoman: yeomanConfig,
     shell: {
       deploy: {
-        command: 'git subtree push --prefix dist origin master',
+        command: [
+          'git add dist',
+          'git commit -am \'Deploying app\'',
+          'git pull',
+          'git push',
+          'git subtree push --prefix dist origin master'
+        ].join('&&'),
         options: {
           stdout: true
         }
