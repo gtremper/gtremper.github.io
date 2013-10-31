@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('PersonalWebsiteApp', [])
+angular.module('PersonalWebsiteApp', ['ui.router'])
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
       .when('/', {
