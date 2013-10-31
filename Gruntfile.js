@@ -28,6 +28,14 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     yeoman: yeomanConfig,
+    shell: {
+      deploy: {
+        command: 'git subtree push --prefix dist origin master',
+        options: {
+          stdout: true
+        }
+      }
+    },
     watch: {
       coffee: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
@@ -360,4 +368,6 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+  grunt.registerTask('deploy',['shell:deploy']);
 };
