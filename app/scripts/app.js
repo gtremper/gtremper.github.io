@@ -1,13 +1,21 @@
 'use strict';
 
 angular.module('PersonalWebsiteApp', ['ui.router'])
-  .config(['$routeProvider', function ($routeProvider) {
-    $routeProvider
-      .when('/', {
+  .config(['$stateProvider','$urlRouterProvider','$locationProvider', function ($stateProvider,$urlRouterProvider,$locationProvider) {
+
+    $locationProvider.html5Mode(true);
+
+    $urlRouterProvider.otherwise('/');
+
+    $stateProvider
+      .state('home',{
+        url: '/',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .otherwise({
-        redirectTo: '/'
+      .state('derp',{
+        url:'/derp',
+        template: '<h1>Herp Derp</h1>'
       });
+
   }]);
